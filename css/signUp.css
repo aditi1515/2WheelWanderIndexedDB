@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+
+.img-container {
+  height: 90vh;
+  width: 50%;
+}
+.img-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+.signUp-container {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #d9e2f7;
+  background-image: url("../assets/images/signinBG.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.signUp-form-container {
+  background-color: rgba(255, 255, 255, 0.182);
+  margin: auto;
+  /* height: 40%; */
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+  color: #292950;
+}
+
+.signUp-form-container h2 span {
+  color: #f5738d;
+}
+.signUp-form-container h2 {
+  text-align: center;
+  color: #292950;
+}
+.signUp-form-container h4 {
+  color: #2929509e;
+  text-align: center;
+}
+.signUp-form-container h4 span {
+  color: #f5738d;
+}
+
+.signUp-form-container input {
+  padding: 5px;
+}
+.signUp-form-container button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f5738d;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.signUp-form-container button:hover {
+  background-color: #f5738d8d;
+}
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.input-field .success input {
+  border-color: #09c372;
+}
+.input-field .error input {
+  border-color: #ff3860;
+}
+.error {
+  color: red;
+  font-size: 10px;
+}
+/* snackbar */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: green; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 1rem; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 10; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

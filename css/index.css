@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+
+.home-container {
+  display: flex;
+}
+.img-container {
+  height: 90vh;
+  width: 40%;
+}
+.img-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+.dateTimepicker-container {
+  width: 60%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #d9e2f7;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.182);
+  margin: auto;
+  /* height: 50%; */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 3rem;
+  font-family: "Poppins", sans-serif;
+  color: #292950;
+}
+.form-container h1 span {
+  color: #f5738d;
+}
+.form-container select {
+  padding: 5px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+}
+.form-container input {
+  padding: 4px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: smaller;
+}
+.form-container button {
+  padding: 10px;
+  background-color: #f5738d;
+  border: none;
+  font-family: "Poppins", sans-serif;
+
+  margin-top: 10px;
+}
+.form-container button:hover {
+  background-color: #f5738d8d;
+  cursor: pointer;
+}
+
+/* snackbar */
+#datesValidation-snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: red; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 1rem; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 10; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#datesValidation-snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}

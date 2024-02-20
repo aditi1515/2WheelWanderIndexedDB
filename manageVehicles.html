@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2WW</title>
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/manageVehicles.css"/>
+ 
+
+</head>
+<body>
+  <nav class="navbar-container">
+    <div class="nav-logo"><a href="./index.html">2WheelWander</a></div>
+    <ul class="nav-options-container loggedOut-navbar-options" >
+    <li class="nav-options"> <a href="./signIn.html "  target="_top" class="nav-links">Sign in</a> </li>
+    <li class="nav-options"> <a href="./signUp.html "  target="_top" class="nav-links">Sign up</a> </li>
+    </ul>
+
+    <ul class="nav-options-container loggedIn-navbar-options">
+      <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+      <div class="dropdown">
+        <!-- <button class="dropbtn">Dropdown</button> -->
+        <li class="nav-options "><div class="user-img-container "><img src="./assets/images/user2.png" class="user-img"></div></li>
+        <div class="dropdown-user-content">
+          <a href="./userProfile.html">View Profile</a>
+          <a href="#"  id = "logOut-link">Logout</a>
+          
+        </div>
+      </div>
+     
+     
+     
+    </ul>
+    <ul class="nav-options-container loggedIn-navbar-options admin">
+      <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+      <div class="dropdown">
+      
+        <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+        <div class="dropdown-content dropdown-content-user">
+          <a href="./userProfile.html">View Profile</a>
+          <a href="#" id = "logOut-link">Log Out</a>
+          
+        </div>
+      </div>
+     
+     
+      <div class="dropdown">
+        <!-- <button class="dropbtn">Dropdown</button> -->
+        <li class="admin-option "><button>Admin Control</button></li>
+        <div class="dropdown-content">
+          <a href="./manageVehicles.html">Manage Vehicles</a>
+          <a href="./analytics.html">Statistics</a>
+          
+        </div>
+      </div>
+    </ul>
+    </div> 
+    
+  </nav>    
+
+  <section class="vehicles-section">
+  <div class="add-vehicles-container">
+    <h1>Manage Vehicles</h1>
+    <div class="addUser-container">
+      <dialog id="vehicleForm-dialog">
+        <form class="vehicle-form-container-main">
+          <h2>Welcome to <span>2WheelWander</span></h2>
+         
+          <div class="input-field-vehicle">
+            <label for="vname">Vehicle Type :</label>
+            <p>
+              <input type="radio" id="bike" name="radio-group" value="bike" required>
+              <label for="test1">Bike</label>
+            </p>
+            <p>
+              <input type="radio" id="scooter" name="radio-group" value="scooter" required>
+              <label for="test2">Scooter</label>
+            </p>
+            
+           
+          </div>
+          <div class="input-field">
+            <label for="vbrand">Vehicle Brand :</label>
+            <input type="text" name="vbrand" id="vbrand" required />
+         
+          </div>
+          <div class="input-field">
+            <label for="vnum">Vehicle Model :</label>
+            <input type="text" name="vmodel" id="vmodel" required/>
+          
+          </div>
+          <div class="input-field">
+            <label for="vnum">Vehicle Number :</label>
+             <input type="text" name="vnum" id="vnum" required />
+          
+          </div>
+          <div class="input-field" >
+            <label for="vimg">Vehicle Image :</label>
+            <input type="file" name="vimg" id="vimg"  accept=".jpg,.png " required/>
+           
+          </div>
+          <div class="input-field">
+            <label for="location">Location :</label>
+            <select class="locationSelect" required>
+             <!-- <option value="">Select city</option> -->
+            </select>
+           
+          </div>
+          <div class="input-field">
+            <label for="price">Price per hour :</label>
+            <input type="number" name="price" id="price" required />
+          
+          </div>
+  
+          <div class="input-field">
+            <label for="nightPrice">Price (10pm - 6am) :</label>
+            <input type="number" name="nightPrice" id="nightPrice" required />
+           
+          </div>
+  
+          
+         
+          <div class="form-btn-container">
+            <button  type="submit" class="submit-btn-form">Add Vehicle</button>
+            <button  type="button" class="closeForm-btn">Close</button>
+            
+          </div>
+        </form>
+        
+      </dialog>
+      <div id="snackbar">Vehicle added successfully</div>
+      
+      <button class="addVehicle-btn"> Add Vehicle</button>
+    </div>
+  </div>
+  <div class="displayBikes-container">
+    <div class = "control">
+      <div class="search-params">
+        <div class="input">
+          <label for = "search">Search Model: </label>
+          <input type="text" name="search" id="searchByName">
+        </div>
+        <!-- <div class="input">
+          <label>Sort: <label>
+          <select search="true" id="sort">
+            <option value="HighToLowPrice">Highest To Lowest Price<option>
+            <option value = "LowToHighPrice">Lowest To Highest Price<option>
+          </select>
+        </div> -->
+      </div>
+      <div class="displayBikes">
+        <table>
+          <thead>
+            
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Type</th>
+            <th>Location</th>
+            <th>DayPrice</th>
+            <th>Price(10pm-6am)</th>
+   
+            <th>Image</th>
+            <th>Actions</th>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="paginationWrapper">
+          <div class="input">
+            <label for = "itemPerPage">Items Per Page : </label>
+            <input type="number" name="itemPerPage" id="itemPerPage" value = 10>
+            <span id="item-per-page-warning"></span>
+          </div>
+          <div class="input">
+            Page no
+            <span id="pageNo">1</span>
+            <span> of </span>
+            <span id="totalPages"></span>
+          </div>
+          <button id="prevPage">Prev</button>
+          <button id="nextPage">Next</button>
+        </div>
+      </div>
+      
+  </div>
+  <dialog  id="displayBooking-dialog" class="displayBooking-dialog"></dialog>
+  </section>
+  <div id="snackbar-displaypage"></div>
+  <script src="./scripts/navbar.js"></script> 
+  <script src="./indexDB.js"></script> 
+  <script src="./scripts/manageVehicles.js"></script>
+  <script src="./scripts/displayVehicles.js"></script>
+  <script src="./scripts/displayVehiclesDropdown.js"></script>
+</body>
+</html>

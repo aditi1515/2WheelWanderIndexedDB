@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2WW</title>
+    <link rel="stylesheet" href="./css/navbar.css"></link>
+    <link rel="stylesheet" href="./css/analytics.css"></link>
+  </head>
+  <body>
+    <nav class="navbar-container">
+      <div class="nav-logo"><a href="./index.html">2WheelWander</a></div>
+      <ul class="nav-options-container loggedOut-navbar-options" >
+      <li class="nav-options"> <a href="./signIn.html "  target="_top" class="nav-links">Sign in</a> </li>
+      <li class="nav-options"> <a href="./signUp.html "  target="_top" class="nav-links">Sign up</a> </li>
+      </ul>
+
+      <ul class="nav-options-container loggedIn-navbar-options ">
+        <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+        <div class="dropdown">
+          <!-- <button class="dropbtn">Dropdown</button> -->
+          <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+          <div class="dropdown-user-content">
+            <a href="./userProfile.html">View Profile</a>
+            <a href="#"  id = "logOut-link">Logout</a>
+            
+          </div>
+        </div>
+       
+       
+       
+      </ul>
+      <ul class="nav-options-container loggedIn-navbar-options admin">
+        <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+        <div class="dropdown">
+        
+          <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+          <div class="dropdown-content dropdown-content-user">
+            <a href="./userProfile.html">View Profile</a>
+            <a href="#"  id = "logOut-link">Log Out</a>
+            
+          </div>
+        </div>
+       
+       
+        <div class="dropdown">
+          <!-- <button class="dropbtn">Dropdown</button> -->
+          <li class="admin-option "><button>Admin Control</button></li>
+          <div class="dropdown-content">
+            <a href="./manageVehicles.html">Manage Vehicles</a>
+            <a href="./analytics.html">Statistics</a>
+            
+          </div>
+        </div>
+      </ul>
+      </div> 
+      
+    </nav>    
+    <section class="analytics-section">
+      <h1>Analytics</h1>
+      <div class="analytics-container">
+        <div class="figures-container">  
+         
+      </div>
+      <div class="chart-container">
+        <div  class="bike-scooter-chart"><h3>Most Booked Vehicle Type </h3> <canvas id="bike-scooter-canvas">
+          
+        </canvas></div>
+        <div  class="liked-brands-chart"><h3>Most Booked Brands </h3> <canvas id="liked-brands-canvas">
+          
+        </canvas></div>
+        
+      </div>
+      <div class="chart-container-2">  <div  class="liked-cities-chart"><h3>City Wise Bookings</h3> <canvas id="liked-cities-canvas">
+          
+      </canvas></div>
+      <div  class="user-bookings-chart"><h3>Bookings Rate</h3> <canvas id="user-bookings-canvas">
+          
+      </canvas></div></div>
+      <div class="chart-container-3"> 
+         <div  class="revenue-chart">
+          <div class="revenue-chart-heading">
+            <h3> Revenue Analysis </h3> 
+            <p>* Only Completed Bookings</p>
+          </div>
+
+          <select class="revenue-select">
+        <option value="day-wise">Day Wise</option>
+        <option value="month-wise">Month Wise</option>
+        <option value="year-wise">Year Wise</option>
+      </select>
+        <canvas id="revenue-chart-canvas">
+          
+      </canvas></div>
+     </div>
+
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./scripts/navbar.js"></script>
+    <script src="./indexDB.js"></script>
+    <script src="./scripts/analytics.js"></script>
+    
+  </body>
+</html>

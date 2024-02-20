@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2WW</title>
+    <link rel="stylesheet" href="./css/navbar.css"></link>
+    <link rel="stylesheet" href="./css/index.css"></link>
+
+  </head>
+  <body>
+    <nav class="navbar-container">
+      <div class="nav-logo"><a href="./index.html">2WheelWander</a></div>
+      <ul class="nav-options-container loggedOut-navbar-options" >
+      <li class="nav-options"> <a href="./signIn.html "  target="_top" class="nav-links">Sign in</a> </li>
+      <li class="nav-options"> <a href="./signUp.html "  target="_top" class="nav-links">Sign up</a> </li>
+      </ul>
+
+      <ul class="nav-options-container loggedIn-navbar-options ">
+        <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+        <div class="dropdown">
+          <!-- <button class="dropbtn">Dropdown</button> -->
+          <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+          <div class="dropdown-user-content">
+            <a href="./userProfile.html">View Profile</a>
+            <a href="#"  id = "logOut-link">Logout</a>
+            
+          </div>
+        </div>
+       
+       
+       
+      </ul>
+      <ul class="nav-options-container loggedIn-navbar-options admin">
+        <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+        <div class="dropdown">
+        
+          <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+          <div class="dropdown-content dropdown-content-user">
+            <a href="./userProfile.html">View Profile</a>
+            <a href="#"  id = "logOut-link">Log Out</a>
+            
+          </div>
+        </div>
+       
+       
+        <div class="dropdown">
+          <!-- <button class="dropbtn">Dropdown</button> -->
+          <li class="admin-option "><button>Admin Control</button></li>
+          <div class="dropdown-content">
+            <a href="./manageVehicles.html">Manage Vehicles</a>
+            <a href="./analytics.html">Statistics</a>
+            
+          </div>
+        </div>
+      </ul>
+      </div> 
+      
+    </nav>    
+
+
+    <section class="home-container">
+      <div class="img-container">
+        <img src="./assets/images/homePageRental.png" class="image">
+      </div>
+      <div class="dateTimepicker-container">
+      
+        <form  class="form-container" onsubmit="validateAndRedirect(event); return false;" >
+          <h1>Commuting Made <span>Easy</span></h1>
+          <h1><span>Affordable</span> and <span>Quick</span></h1>
+         <label for="location">Location :</label>
+       <select class="locationSelect" name="locationSelect">
+
+       </select>
+        <div></div>
+         <label for="start-date">Start Date & Time :</label>
+         <input type = "datetime-local" name="start-date" id="start-date" min=""/>
+         <label for="end-date">End Date & Time :</label>
+       
+         <input type = "datetime-local" name="end-date" id="end-date" min=""/>
+         <small style="color: black;">* Minimum Rental Time 30 minutes</small>
+         <button type="submit" >Find a Ride </button>
+        </form>
+      </div>
+      <div id="datesValidation-snackbar"></div>
+    </section>
+    <script>
+
+function getCurrentDateTimeString() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hour = String(now.getHours()).padStart(2, '0');
+        const minute = String(now.getMinutes()).padStart(2, '0');
+        return `${year}-${month}-${day}T${hour}:${minute}`;
+    }
+    function getThirtyMinutesAhead() {
+    const now = new Date();
+    const thirtyMinutesLater = new Date(now.getTime() + 30 * 60000); // 30 minutes in milliseconds
+    const year = thirtyMinutesLater.getFullYear();
+    const month = String(thirtyMinutesLater.getMonth() + 1).padStart(2, '0');
+    const day = String(thirtyMinutesLater.getDate()).padStart(2, '0');
+    const hour = String(thirtyMinutesLater.getHours()).padStart(2, '0');
+    const minute = String(thirtyMinutesLater.getMinutes()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hour}:${minute}`;
+}
+
+function setMinDateTime() {
+  const startDateInput = document.getElementById('start-date');
+  const endDateInput = document.getElementById('end-date');
+    startDateInput.min = getCurrentDateTimeString()
+    startDateInput.value = getCurrentDateTimeString();
+    endDateInput.min = getCurrentDateTimeString();
+    endDateInput.value = getThirtyMinutesAhead();
+}
+  setMinDateTime();
+
+    function validateAndRedirect(event) {
+   
+  event.preventDefault();
+  // Get form elements
+  const locationSelect = document.querySelector('.locationSelect');
+  const startDateInput = document.getElementById('start-date');
+  const endDateInput = document.getElementById('end-date');
+
+  // Validate location
+  if (locationSelect.value === '') {
+    // alert('Please select a city');
+    showSnackbar('Please select a city');
+    return false;
+  }
+
+  // Validate if dates are empty
+  if (startDateInput.value === '' || endDateInput.value === '') {
+    showSnackbar('Please select a valid date range',2000);
+    return false;
+  }
+
+  // Validate date and time
+  const startDate = new Date(startDateInput.value);
+  const endDate = new Date(endDateInput.value);
+
+  // Validate if start date is in the past
+  const bufferTime = 1 * 60 * 1000; // 1 minute in milliseconds
+
+if (startDate < new Date() - bufferTime || endDate < new Date() - bufferTime) {
+ showSnackbar("Dates must not be  in the past",2000);
+ return false;
+}
+
+  // Validate if end date is at least 30 mins ahead of start date
+  const minDifference = 1 * 30 * 60  * 1000; // 1 hour in milliseconds
+
+  if(endDate<startDate){
+    showSnackbar('Enter Valid Dates',2000)
+    return false;
+  }
+ else if (endDate - startDate < minDifference) {
+    showSnackbar('Minimum duration between start and end date should be 30mins',2000);
+    return false;
+  }
+
+  // Construct the URL for redirection
+  const redirectURL = `http://127.0.0.1:5500/bookingPage.html?locationSelect=${encodeURIComponent(locationSelect.value)}&start-date=${encodeURIComponent(startDateInput.value)}&end-date=${encodeURIComponent(endDateInput.value)}`;
+
+  // Redirect to the new URL
+  window.location.replace(redirectURL);
+}
+    </script>
+    <script src="./scripts/navbar.js"></script>
+    <script src="./indexDB.js"></script>
+    
+    <script src="./locations.js"></script>
+    <script src="./scripts/index.js"></script>
+    
+  </body>
+</html>

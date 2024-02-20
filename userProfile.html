@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2WW</title>
+  <link rel="stylesheet" href="./css/navbar.css"></link>
+  <link rel="stylesheet" href="./css/userProfile.css"></link>
+</head>
+<body>
+  <nav class="navbar-container">
+    <div class="nav-logo"><a href="./index.html">2WheelWander</a></div>
+    <ul class="nav-options-container loggedOut-navbar-options" >
+    <li class="nav-options"> <a href="./signIn.html "  target="_top" class="nav-links">Sign in</a> </li>
+    <li class="nav-options"> <a href="./signUp.html "  target="_top" class="nav-links">Sign up</a> </li>
+    </ul>
+
+    <ul class="nav-options-container loggedIn-navbar-options">
+      <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+      <div class="dropdown">
+        <!-- <button class="dropbtn">Dropdown</button> -->
+        <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+        <div class="dropdown-user-content">
+          <a href="./userProfile.html">View Profile</a>
+          <a href="#"  id = "logOut-link">Logout</a>
+          
+        </div>
+      </div>
+     
+     
+     
+    </ul>
+    <ul class="nav-options-container loggedIn-navbar-options admin">
+      <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+      <div class="dropdown">
+      
+        <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+        <div class="dropdown-content dropdown-content-user">
+          <a href="./userProfile.html">View Profile</a>
+          <a href="#" id = "logOut-link">Log Out</a>
+          
+        </div>
+      </div>
+     
+     
+      <div class="dropdown">
+        <!-- <button class="dropbtn">Dropdown</button> -->
+        <li class="admin-option "><button>Admin Control</button></li>
+        <div class="dropdown-content">
+          <a href="./manageVehicles.html">Manage Vehicles</a>
+          <a href="./analytics.html">Statistics</a>
+          
+        </div>
+      </div>
+    </ul>
+    </div> 
+    
+  </nav>    
+
+  <section class="home-container">
+    <div class="profileLeft-container">
+      <!-- <img src="./assets/images/profileBG.png" class="image"> -->
+      <div  class="profile-container">
+        
+        <div class="details">
+          <h1>Profile Details </h1>
+        </div>
+        <button class="change-password">Change Password</button>
+        <dialog  id="changePass-dialog" >
+          <form class="pass-container">
+             
+            <div class="input-field">
+              <label for="curr-pass">Current Password :</label>
+              <input type="password" name="curr-pass" id="curr-pass" required />
+              <div class="error"></div>
+            </div>
+            <div class="input-field">
+              <label for="new-pass">New Password :</label>
+              <input type="password" name="new-pass" id="new-pass" required />
+              <div class="error"></div>
+            </div>
+            <div class="input-field">
+              <label for="confirm-new-pass">Confirm New Password :</label>
+              <input type="password" name="confirm-new-pass" id="confirm-new-pass" required />
+              <div class="error"></div>
+            </div>
+         
+          <div class="btn-container-2"> <button class="pass-change">Confirm</button>
+            <button class="pass-cancel">Cancel</button></div>
+            </form>
+         
+        </dialog>
+        <div id = 'passChange-snackbar'></div>
+      </div>
+    </div>
+    <div class="profileInfo-container">
+      <div  class="order-container">
+        <h1>ORDER HISTORY </h1>
+        <div>Ongoing orders
+          <table >
+            <thead>
+              
+              <th>Vehicle Model</th>
+              <th>Type</th>
+              <th>Location</th>
+              <th>Start Date </th>
+              <th>End Date</th>
+              <th>Image</th>
+              <th>Status</th>
+            </thead>
+            <tbody class="ongoing-table"></tbody>
+          </table>
+        </div>
+
+        <div>Active orders
+          <table>
+            <thead>
+              
+              <th>Vehicle Model</th>
+              <th>Type</th>
+              <th>Location</th>
+              <th>Start Date </th>
+              <th>End Date</th>
+              <th>Image</th>
+              <th>Status</th>
+            </thead>
+            <tbody class="active-table"></tbody>
+            <dialog id="cancel-confirm-dialog"></dialog>
+          </table>
+        </div>
+        <div>Passive orders
+          <table>
+            <thead>
+              <th>Vehicle Model</th>
+              <th>Type</th>
+              <th>Location</th>
+              <th>Start Date </th>
+              <th>End Date</th>
+              <th>Image</th>
+              <th>Status</th>
+            </thead>
+            <tbody class="passive-table"></tbody>
+          </table>
+        </div>
+        
+      </div>
+     
+    </div>
+  </section>
+ 
+  <script src="./scripts/navbar.js"></script>
+  <script src="./indexDB.js"></script>
+  <script src="./scripts/userProfile.js"></script>
+ 
+  
+</body>
+</html>

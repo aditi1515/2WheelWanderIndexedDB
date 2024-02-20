@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2WW</title>
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/bookingPage.css"/>
+</head>
+
+<body>
+  <nav class="navbar-container">
+    <div class="nav-logo"><a href="./index.html">2WheelWander</a></div>
+    <ul class="nav-options-container loggedOut-navbar-options" >
+    <li class="nav-options"> <a href="./signIn.html "  target="_top" class="nav-links">Sign in</a> </li>
+    <li class="nav-options"> <a href="./signUp.html "  target="_top" class="nav-links">Sign up</a> </li>
+    </ul>
+
+    <ul class="nav-options-container loggedIn-navbar-options">
+      <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+      <div class="dropdown">
+        <!-- <button class="dropbtn">Dropdown</button> -->
+        <li class="nav-options "><div class="user-img-container "><img src="./assets/images/user2.png" class="user-img"></div></li>
+        <div class="dropdown-user-content">
+          <a href="./userProfile.html">View Profile</a>
+          <a href="#"  id = "logOut-link">Logout</a>
+          
+        </div>
+      </div>
+     
+     
+     
+    </ul>
+    <ul class="nav-options-container loggedIn-navbar-options admin">
+      <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
+      <div class="dropdown">
+      
+        <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+        <div class="dropdown-content dropdown-content-user">
+          <a href="./userProfile.html">View Profile</a>
+          <a href="#" id = "logOut-link">Log Out</a>
+          
+        </div>
+      </div>
+     
+     
+      <div class="dropdown">
+        <!-- <button class="dropbtn">Dropdown</button> -->
+        <li class="admin-option "><button>Admin Control</button></li>
+        <div class="dropdown-content">
+          <a href="./manageVehicles.html">Manage Vehicles</a>
+          <a href="./analytics.html">Statistics</a>
+          
+        </div>
+      </div>
+    </ul>
+    </div> 
+    
+  </nav>    
+
+  <div class="available-vehicles">
+    <div class="dateTime-picker">
+      <form  class="form-container" onsubmit="validateAndRedirect(event); return false;">
+       <div>  <label for="location">Location :</label>
+        <select id="locationSelectFilter" class="locationSelect" name="locationSelect" >
+      
+       </select></div>
+     
+<div> <label for="start-date">Start Date & Time :</label>
+  <input type = "datetime-local" name="start-date" id="start-date-time"/></div>
+      <div>   <label for="end-date">End Date & Time :</label>
+        <input type = "datetime-local" name="end-date" id="end-date-time"/></div>
+    
+       <button type="submit" >Find a Ride </button>
+      </form>
+      <div id ='bookingPage-dates-snackbar'></div>
+    </div>
+    
+    <div class="vehicles-card-container">
+
+     
+      <!-- <div class="vehicle-card">
+        <div class="imgHeading-container">  <div ><img src="./assets/images/vehicles/activa 6g mumbai.jpg"/></div> <p>Honda Activa 3G</p></div>
+       
+      
+        <div class="price-container">
+          <div class="price1"><p>Rs 200/hr</p>  <p>Rs 250/hr <span>(10pm-6am)</span></p></div>
+      
+          <div class="price2">
+            <p>Total amt : </p>
+            <span>Rs 2000 </span>
+           
+          </div>
+        </div>
+        <button>Book Now</button>
+      </div> -->
+
+      <dialog  id="displayBooking-dialog" class="displayBooking-dialog">
+        
+      </dialog>
+      <div id="snackbar">Order created successfully</div>
+    </div>
+  </div>
+  <script>
+      
+    function getCurrentDateTimeString() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hour = String(now.getHours()).padStart(2, '0');
+            const minute = String(now.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day}T${hour}:${minute}`;
+        }
+        function getThirtyMinutesAhead() {
+    const now = new Date();
+    const thirtyMinutesLater = new Date(now.getTime() + 30 * 60000); // 30 minutes in milliseconds
+    const year = thirtyMinutesLater.getFullYear();
+    const month = String(thirtyMinutesLater.getMonth() + 1).padStart(2, '0');
+    const day = String(thirtyMinutesLater.getDate()).padStart(2, '0');
+    const hour = String(thirtyMinutesLater.getHours()).padStart(2, '0');
+    const minute = String(thirtyMinutesLater.getMinutes()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hour}:${minute}`;
+}
+    function setMinDateTime() {
+      const startDateInput = document.getElementById('start-date-time');
+      const endDateInput = document.getElementById('end-date-time');
+        startDateInput.min = getCurrentDateTimeString()
+        startDateInput.value = getCurrentDateTimeString();
+        endDateInput.min = getCurrentDateTimeString();
+        endDateInput.value = getThirtyMinutesAhead();
+    }
+      setMinDateTime();
+      </script>
+  <script src="./scripts/navbar.js"></script>
+  <script src="./indexDB.js"></script>
+  <script src="./scripts/bookingPage.js"></script>
+</body>
+</html>

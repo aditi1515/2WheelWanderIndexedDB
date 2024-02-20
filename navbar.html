@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2WheelWander</title>
+    <link rel="stylesheet" href="./css/navbar.css"></link>
+  </head>
+  <body>
+    <nav class="navbar-container">
+      <div class="nav-logo"><a href="./index.html">2WheelWander</a></div>
+      <ul class="nav-options-container loggedOut-navbar-options" >
+      <li class="nav-options"> <a href="./signIn.html "  target="_top" class="nav-links">Sign in</a> </li>
+      <li class="nav-options"> <a href="./signUp.html "  target="_top" class="nav-links">Sign up</a> </li>
+      </ul>
+
+      <ul class="nav-options-container loggedIn-navbar-options">
+        <li class="nav-options "><div class="user-img-container"><img src="./assets/images/home.png" class="user-img"></div></li>
+        <div class="dropdown">
+          <!-- <button class="dropbtn">Dropdown</button> -->
+          <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+          <div class="dropdown-user-content">
+            <a href="#">View Profile</a>
+            <a href="#"  id = "logOut-link">Logout</a>
+            
+          </div>
+        </div>
+       
+       
+       
+      </ul>
+      <ul class="nav-options-container loggedIn-navbar-options admin">
+        <li class="nav-options "><div class="user-img-container"><img src="./assets/images/home.png" class="user-img"></div></li>
+        <div class="dropdown">
+        
+          <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+          <div class="dropdown-content dropdown-content-user">
+            <a href="#">View Profile</a>
+            <a href="#"  id = "logOut-link">Log Out</a>
+            
+          </div>
+        </div>
+       
+       
+        <div class="dropdown">
+          <!-- <button class="dropbtn">Dropdown</button> -->
+          <li class="admin-option "><button>Admin Control</button></li>
+          <div class="dropdown-content">
+            <a href="#">Manage Vehicles</a>
+            <a href="#">Statistics</a>
+            
+          </div>
+        </div>
+      </ul>
+      </div> 
+      
+    </nav>    
+
+    <script src="./scripts/navbar.js"></script>
+  </body>
+</html>

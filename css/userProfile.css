@@ -1,0 +1,231 @@
+body {
+  background-color: #d9e2f7;
+}
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profileLeft-container {
+  background-image: url("../assets/images/profileBG.png");
+
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
+
+.profile-container {
+  background-color: rgba(255, 255, 255, 0.182);
+
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem;
+  font-family: "Poppins", sans-serif;
+  color: #292950;
+  width: 50%;
+}
+.profile-container h1 {
+  text-align: center;
+  color: #f5738d;
+}
+.profile-container button {
+  width: 50%;
+  padding: 10px;
+  background-color: #f5738d;
+  border: none;
+  font-family: "Poppins", sans-serif;
+
+  margin-top: 10px;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+  color: #292950;
+  /* background-color: red; */
+}
+.profile-container button:hover {
+  background-color: #f5738d8d;
+  cursor: pointer;
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+
+.profileInfo-container {
+  /* width: 60%; */
+  /* height: 90vh; */
+  display: flex;
+  flex-direction: column;
+  background-color: #d9e2f7;
+}
+
+.order-container {
+  background-color: rgba(255, 255, 255, 0.182);
+  margin: auto;
+  /* height: 50%; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 3rem;
+  font-family: "Poppins", sans-serif;
+  color: #292950;
+}
+.order-container h1 {
+  color: #f5738d;
+  text-align: center;
+}
+.order-container select {
+  padding: 5px;
+}
+.form-container input {
+  padding: 5px;
+}
+
+/* //table */
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+  /* margin-top: 20px; */
+  background-color: #d9e2f7;
+}
+
+th {
+  font-family: "Poppins", sans-serif;
+  border: 1px solid #f5738d;
+  padding: 8px;
+  text-align: center;
+  font-size: medium;
+  color: #292950;
+}
+
+td {
+  border: 1px solid #f5738d;
+  padding: 8px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: small;
+  color: #292950;
+}
+tbody img {
+  height: 5rem;
+}
+.active-cancel-btn {
+  padding: 10px;
+  background-color: #f5738d;
+  border: none;
+  font-family: "Poppins", sans-serif;
+}
+.active-cancel-btn:hover {
+  background-color: #f5738d8d;
+  cursor: pointer;
+}
+/* change pass dialog */
+
+#changePass-dialog {
+  padding: 2rem;
+  background-color: #292950;
+  border: none;
+  width: 30%;
+  margin: auto;
+  margin-top: -3rem;
+  z-index: 10;
+  color: white;
+  gap: 1rem;
+  font-family: "Poppins";
+}
+#changePass-dialog .pass-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#changePass-dialog input {
+  padding: 10px;
+  width: 90%;
+}
+.btn-container-2 {
+  display: flex;
+  gap: 1rem;
+}
+.error {
+  color: red;
+  font-size: 10px;
+}
+#passChange-snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: green; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 1rem; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 10; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#passChange-snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}

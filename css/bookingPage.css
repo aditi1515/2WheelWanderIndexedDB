@@ -1,0 +1,331 @@
+body {
+  background-color: #d9e2f7;
+}
+
+.dateTime-picker {
+  /* background-color: pink; */
+  padding: 2rem 0;
+}
+.form-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  color: #292950;
+  font-size: smaller;
+  background-color: rgba(255, 255, 255, 0.182);
+  margin: auto;
+  padding: 3rem;
+  width: 70%;
+}
+.form-container select {
+  padding: 4px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+}
+.form-container input {
+  padding: 4px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: smaller;
+}
+.form-container button {
+  padding: 6px;
+  background-color: #f5738d;
+  border: none;
+  font-family: "Poppins", sans-serif;
+
+  width: 10%;
+}
+.form-container button:hover {
+  background-color: #f5738d8d;
+  cursor: pointer;
+}
+.vehicles-card-container {
+  padding: 2rem 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  justify-content: center;
+}
+
+.vehicle-card {
+  width: 15rem;
+  height: 20rem;
+  /* background-color: #292950; */
+  padding: 10px;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.imgHeading-container {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
+}
+.imgHeading-container p {
+  text-align: center;
+}
+.vehicle-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.price-container {
+  display: flex;
+  width: 100%;
+  /* background-color: #f5738d; */
+  font-size: small;
+  justify-content: space-between;
+  color: #292950;
+}
+.price1 .price2 {
+  display: flex;
+  flex-direction: column;
+}
+.price1 span {
+  display: block;
+}
+.vehicle-card button {
+  font-size: small;
+  padding: 10px;
+  background-color: #f5738d;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  width: 90%;
+}
+.price2 span {
+  font-size: medium;
+  color: #f5738d;
+}
+.vehicle-card button:hover {
+  background-color: #f5738d8d;
+  cursor: pointer;
+}
+
+/* display dialog */
+.displayBooking-dialog {
+  background-color: #292950;
+
+  border: none;
+  width: 30%;
+  padding: 2rem;
+
+  margin: auto;
+  margin-top: -8rem;
+  /* display: flex; */
+  flex-direction: column;
+  gap: 10px;
+}
+
+.displayBooking-order {
+  margin: auto;
+  /* height: 40%; */
+  /* width: 50%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+.orderImg-container {
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.orderImg-container image {
+  width: 15rem;
+  height: 20rem;
+}
+.image img {
+  height: 100%;
+  width: 100%;
+}
+.displayBooking-order h2 span {
+  color: #f49aac;
+}
+.displayBooking-order h2 {
+  color: white;
+}
+
+.dateTime-container {
+  display: flex;
+  flex-direction: column;
+  font-size: medium;
+}
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-container button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 50%;
+  background-color: #f38a9f;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.btn-container button:hover {
+  background-color: #f5738d8d;
+  cursor: pointer;
+}
+/* snackbar */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: green; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 1rem; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 10; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+
+/* snackbar */
+#bookingPage-dates-snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: red; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 1rem; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 10; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#bookingPage-dates-snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
