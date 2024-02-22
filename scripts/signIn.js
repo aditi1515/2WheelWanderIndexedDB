@@ -83,6 +83,6 @@ function saveCurrUserObj(currUser) {
 
   window.location = redirectLink;
   localStorage.removeItem("redirectURL");
-  
+
   // handleNavbarVisibility();
 }

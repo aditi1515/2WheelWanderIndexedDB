@@ -84,12 +84,15 @@ function prepareData() {
   const passwordVal = password.value;
   const confirmPassVal = confirmPass.value;
   const userData = {
-    fname: fnameVal.trim(),
-    lname: lnameVal.trim(),
+    fname: fnameVal.toLowerCase().trim(),
+    lname: lnameVal.toLowerCase().trim(),
     mobile: mobileVal,
-    email: emailVal.trim(),
+    email: emailVal.toLowerCase().trim(),
     password: passwordVal,
     confirmPass: confirmPassVal,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    
   };
   return userData;
 }
@@ -186,7 +189,7 @@ function saveUser(userData) {
   // const users = JSON.parse(localStorage.getItem("users")) || [];
   const userId = generateUserId();
 
-  const user = { userId: userId, ...userData, role: "user" };
+  const user = { userId: userId, ...userData, role: "user"};
   // users.push(user);
   // localStorage.setItem("users", JSON.stringify(users));
   console.log(user);

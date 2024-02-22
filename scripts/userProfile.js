@@ -11,11 +11,20 @@ const passChangeBtn = document.querySelector(".pass-change");
 const cancelChangeBtn = document.querySelector(".pass-cancel");
 const passChangeForm = document.querySelector(".pass-container");
 const passChangeSnackbar = document.querySelector("#passChange-snackbar");
+const profileInfoContainer = document.querySelector(".profileInfo-container");
+
 window.addEventListener("load", () => {
  const currUser = JSON.parse(localStorage.getItem("currUser"));
 
  if (currUser === null) {
   window.location = "./index.html";
+ }
+
+
+ if (currUser.role === "admin") {
+  profileInfoContainer.style.display = "none";
+ } else {
+  profileInfoContainer.style.display = "block";
  }
 });
 
@@ -67,6 +76,8 @@ function validateInputs(newPass) {
 
    if (errorMessageMap.size === 0) {
     user.password = newPass;
+    // user.updatedAt = new Date().toISOString();
+    // user.updatedBy = JSON.parse(localStorage.getItem("currUser"))?.userId,
     openDatabase()
      .then((db) => {
       return addToObjectStore(db, "users", user);

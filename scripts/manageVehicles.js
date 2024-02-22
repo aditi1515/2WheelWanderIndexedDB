@@ -81,7 +81,7 @@ function prepareData() {
  const nightPriceVal = nightPrice.value;
 
  if (priceHourVal <= 0 || nightPriceVal <= 0) {
-  showSnackbar("Price cannot be negative or 0", 2000);
+  showSnackbar("Price cannot be negative or 0", 2000,'red');
   return;
  }
 
@@ -101,6 +101,10 @@ function prepareData() {
   priceHour: priceHourVal,
   nightPrice: nightPriceVal,
   available: true,
+  // createdAt: new Date().toISOString(),
+  // updatedAt: new Date().toISOString(),
+  // createdBy: JSON.parse(localStorage.getItem("currUser"))?.userId,
+  // updatedBy: JSON.parse(localStorage.getItem("currUser"))?.userId,
   // orderIds: [],
  };
  compressImg64(vimgVal).then((image) => {
@@ -109,7 +113,7 @@ function prepareData() {
   saveVehicleData(vehicleData);
   console.log("vehicleData submit", vehicleData);
   vehicleForm.reset();
-  showSnackbar("Vehicle Added Successfully", 2000);
+  showSnackbar("Vehicle Added Successfully", 2000,'green');
   vehicleFormDialog.close();
  });
 }
@@ -182,7 +186,7 @@ function saveVehicleData(vehicleData) {
    console.log("Data added successfully", addedKey);
   })
   .then(() => {
-   showSnackbar("Vehicle added successfully", 2000);
+   showSnackbar("Vehicle added successfully", 2000 , 'green');
    setTimeout(() => {
     window.location.reload();
    }, 2000);

@@ -10,39 +10,15 @@ const dateValidationSnackbar = document.querySelector(
 
 //add locations in select menu
 
-const locationArr = [
- { city: "Mumbai", enabled: true },
- { city: "Delhi", enabled: true },
- { city: "Bangalore", enabled: true },
- { city: "Chennai", enabled: true },
- { city: "Jaipur", enabled: true },
- { city: "Lucknow", enabled: true },
-];
+window.addEventListener("load", () => {
+  const currUser = JSON.parse(localStorage.getItem("currUser"));
+ 
+  if (currUser.role === "admin") {
+   window.location = "./analytics.html";
+  }
+ });
 
-addLocations(locationArr);
 
-function addLocations(locationArr) {
- openDatabase()
-  .then((db) => {
-   clearObjectStore(db, "locations");
-
-   return db;
-  })
-  .then((db) => {
-   console.log("Db opened successfully", db);
-
-   for (const location of locationArr) {
-    console.log(location);
-    addToObjectStore(db, "locations", location);
-   }
-  })
-  .catch((err) => {
-   console.log("Error while adding location", err.message);
-  });
- // .then((addedKey) => {
- //   console.log("Locations added successfully", addedKey);
- // })
-}
 // to set locations in select menu
 function setSelectMenu() {
  openDatabase()

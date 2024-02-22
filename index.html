@@ -15,48 +15,50 @@
       <li class="nav-options"> <a href="./signIn.html "  target="_top" class="nav-links">Sign in</a> </li>
       <li class="nav-options"> <a href="./signUp.html "  target="_top" class="nav-links">Sign up</a> </li>
       </ul>
-
+  
       <ul class="nav-options-container loggedIn-navbar-options ">
         <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
-        <div class="dropdown">
+        <!-- <div class="dropdown">
           <!-- <button class="dropbtn">Dropdown</button> -->
-          <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
-          <div class="dropdown-user-content">
-            <a href="./userProfile.html">View Profile</a>
-            <a href="#"  id = "logOut-link">Logout</a>
+          <!-- <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
+          <div class="dropdown-user-content"> --> 
+            <a class="navbar-btn" href="./userProfile.html">View Profile</a>
+            <a class="navbar-btn" href="#"  id = "logOut-link">Logout</a>
             
-          </div>
-        </div>
+          <!-- </div> -->
+        <!-- </div> -->
        
        
        
       </ul>
       <ul class="nav-options-container loggedIn-navbar-options admin">
-        <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li>
-        <div class="dropdown">
+        <!-- <li class="nav-options "><div class="user-img-container home"><img src="./assets/images/home.png" class="user-img"></div></li> -->
+        <!-- <div class="dropdown"> -->
         
-          <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
-          <div class="dropdown-content dropdown-content-user">
+          <!-- <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li> -->
+          <!-- <div class="dropdown-content dropdown-content-user">
             <a href="./userProfile.html">View Profile</a>
             <a href="#"  id = "logOut-link">Log Out</a>
             
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
        
        
-        <div class="dropdown">
+        <!-- <div class="dropdown"> -->
           <!-- <button class="dropbtn">Dropdown</button> -->
-          <li class="admin-option "><button>Admin Control</button></li>
-          <div class="dropdown-content">
-            <a href="./manageVehicles.html">Manage Vehicles</a>
-            <a href="./analytics.html">Statistics</a>
+          <!-- <li class="admin-option "><button>Admin Control</button></li> -->
+          <!-- <div class="dropdown-content"> -->
+            <a class="navbar-btn" href="./userProfile.html">View Profile</a>
+            <a class="navbar-btn" href="./manageVehicles.html">Manage Vehicles</a>
+            <a class="navbar-btn" href="./analytics.html">Statistics</a>
+            <a class="logout-btn" href="#"  id = "logOut-link">Logout</a>
             
-          </div>
-        </div>
+          <!-- </div> -->
+        <!-- </div> -->
       </ul>
       </div> 
       
-    </nav>    
+    </nav>   
 
 
     <section class="home-container">
@@ -86,18 +88,9 @@
     </section>
     <script>
 
-function getCurrentDateTimeString() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hour = String(now.getHours()).padStart(2, '0');
-        const minute = String(now.getMinutes()).padStart(2, '0');
-        return `${year}-${month}-${day}T${hour}:${minute}`;
-    }
-    function getThirtyMinutesAhead() {
+  function getNminsAhead(n) {
     const now = new Date();
-    const thirtyMinutesLater = new Date(now.getTime() + 30 * 60000); // 30 minutes in milliseconds
+    const thirtyMinutesLater = new Date(now.getTime() + n * 60000); // 30 minutes in milliseconds
     const year = thirtyMinutesLater.getFullYear();
     const month = String(thirtyMinutesLater.getMonth() + 1).padStart(2, '0');
     const day = String(thirtyMinutesLater.getDate()).padStart(2, '0');
@@ -106,15 +99,18 @@ function getCurrentDateTimeString() {
     return `${year}-${month}-${day}T${hour}:${minute}`;
 }
 
+   
+
 function setMinDateTime() {
   const startDateInput = document.getElementById('start-date');
   const endDateInput = document.getElementById('end-date');
-    startDateInput.min = getCurrentDateTimeString()
-    startDateInput.value = getCurrentDateTimeString();
-    endDateInput.min = getCurrentDateTimeString();
-    endDateInput.value = getThirtyMinutesAhead();
+    startDateInput.min = getNminsAhead(0)
+    startDateInput.value = getNminsAhead(15)
+    endDateInput.min = getNminsAhead(30);
+    endDateInput.value = getNminsAhead(45);
 }
   setMinDateTime();
+
 
     function validateAndRedirect(event) {
    

@@ -1,26 +1,22 @@
 body {
   background-color: #d9e2f7;
-}
-.analytics-section{
-
-
- display: flex;
- flex-direction: column;
- gap:2rem;
- padding:2rem;
-}
-.analytics-section h1{
+ }
+ .analytics-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+ }
+ .analytics-section h1 {
   color: #f5738d;
- 
-}
-.figures-container{
+ }
+ .figures-container {
   display: flex;
   justify-content: center;
-  gap:1rem;
-  
-}
-
-.figures{
+  gap: 1rem;
+ }
+ 
+ .figures {
   font-family: "Poppins", sans-serif;
   background-color: rgba(255, 255, 255, 0.513);
   width: 20%;
@@ -29,75 +25,144 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  justify-content: flex-end;    
+ }
  
-  
-}
-
-.figures p{
+ .figures div {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+ }
+ 
+ .figures div div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+ }
+ 
+ .figures div div span {
+  /* font-size: 1rem; */
+  font-weight: bold;
+ }
+ 
+ .figures p {
   font-size: 3rem;
   text-align: center;
   justify-self: baseline;
   color: #f5738d;
-
-}
-
-.bike-scooter-chart{
-  width: 30%; 
-  
-}
-.bike-scooter-chart ,.liked-brands-chart ,.liked-cities-chart,.user-bookings-chart,.revenue-chart h3{
-  color:#292950;
-  
+ }
+ 
+ .figures div div p {
+  font-size: 1.5rem;
+  text-align: center;
+  justify-self: baseline;
+  color: #f5738d;
+ }
+ 
+ .bike-scooter-chart {
+  width: 30%;
+ }
+ .bike-scooter-chart,
+ .liked-brands-chart,
+ .liked-cities-chart,
+ .user-bookings-chart,
+ .revenue-chart h3,h3 {
+  color: #292950;
+ 
   font-family: "Poppins", sans-serif;
-
-}
-.chart-container{
+ }
+ .chart-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   padding: 3rem;
-}
-.liked-brands-chart{
+ }
+ .liked-brands-chart {
   width: 70%;
-
-}
-.chart-container-2{
+ }
+ .chart-container-2 {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   padding: 3rem;
-}
-.chart-container-3{
+ }
+ .chart-container-3 {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   padding: 3rem;
-}
-.liked-cities-chart,.revenue-chart{
+ }
+ .liked-cities-chart,
+ .revenue-chart {
   width: 70%;
-}
-.user-bookings-chart{
-  width: 30%; 
-}
-.revenue-select{
-padding: 5px 10px;
-color:#292950;
+ }
+ .user-bookings-chart {
+  width: 30%;
+ }
+ .revenue-select {
+  padding: 5px 10px;
+  color: #292950;
   border: none;
   float: right;
-font-family: "Poppins", sans-serif;
-}
-
-.revenue-chart-heading{
+  font-family: "Poppins", sans-serif;
+ }
+ 
+ .revenue-chart-heading {
   display: flex;
   flex-direction: column;
   gap: 3px;
-}
-
-.revenue-chart-heading p{
+ }
+ 
+ .revenue-chart-heading p {
   font-size: 12px;
   color: #f5738d;
+ }
+ 
+
+ /* Style the table */
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: separate;
+  /* border: 2px solid #ddd; */
+  padding: 2rem;
+
+}
+
+/* Style table headers */
+table th {
+  /* background-color: #f2f2f2; */
+  color: #292950;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid ;
+  font-family: "Poppins", sans-serif;
+  background-color: #f5738d95;
+}
+
+/* Style table rows */
+.user-row td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  
+  border: 1;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Style alternate rows */
+.user-row:nth-child(even) {
+  /* background-color: #292950; */
+  /* color:white; */
+  background-color: #ddd;
+  font-family: "Poppins", sans-serif;
+}
+
+.user-row:nth-child(odd) {
+  /* background-color: #f5738d; */
+  font-family: "Poppins", sans-serif;
+  background-color: #ddd;
 }

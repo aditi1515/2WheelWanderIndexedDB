@@ -103,18 +103,10 @@
   </div>
   <script>
       
-    function getCurrentDateTimeString() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hour = String(now.getHours()).padStart(2, '0');
-            const minute = String(now.getMinutes()).padStart(2, '0');
-            return `${year}-${month}-${day}T${hour}:${minute}`;
-        }
-        function getThirtyMinutesAhead() {
+    
+  function getNminsAhead(n) {
     const now = new Date();
-    const thirtyMinutesLater = new Date(now.getTime() + 30 * 60000); // 30 minutes in milliseconds
+    const thirtyMinutesLater = new Date(now.getTime() + n * 60000); // 30 minutes in milliseconds
     const year = thirtyMinutesLater.getFullYear();
     const month = String(thirtyMinutesLater.getMonth() + 1).padStart(2, '0');
     const day = String(thirtyMinutesLater.getDate()).padStart(2, '0');
@@ -122,13 +114,14 @@
     const minute = String(thirtyMinutesLater.getMinutes()).padStart(2, '0');
     return `${year}-${month}-${day}T${hour}:${minute}`;
 }
+
     function setMinDateTime() {
       const startDateInput = document.getElementById('start-date-time');
       const endDateInput = document.getElementById('end-date-time');
-        startDateInput.min = getCurrentDateTimeString()
-        startDateInput.value = getCurrentDateTimeString();
-        endDateInput.min = getCurrentDateTimeString();
-        endDateInput.value = getThirtyMinutesAhead();
+        startDateInput.min = getNminsAhead(0)
+        startDateInput.value = getNminsAhead(15);
+        endDateInput.min = getNminsAhead(30);
+        endDateInput.value = getNminsAhead(45);
     }
       setMinDateTime();
       </script>

@@ -20,7 +20,7 @@ function getBikes() {
   .then((vehicles) => {
    console.log("Vehicles loaded successfully", vehicles);
    const vehiclesArr = vehicles.filter((vehicle) => {
-    const searchByNameResult = vehicle.vmodel
+    const searchByNameResult = vehicle.vbrand
      .toLowerCase()
      .includes(searchByNameInput.value.toLowerCase());
     let searchByLocation = true;
@@ -317,7 +317,7 @@ function editVehicle(event) {
       </div>
      
       <div class="form-btn-container">
-        <button type="submit" class="submit-btn">save</button>
+        <button type="submit" class="submit-btn">Save</button>
         <button type="button" class="close-editForm-btn">Close</button>
       </div>
      
@@ -361,17 +361,20 @@ function editVehicle(event) {
      ...vehicle,
      priceHour,
      nightPrice,
-
+    
+    //  updatedAt: new Date().toISOString(),
+     
+    //  updatedBy: JSON.parse(localStorage.getItem("currUser"))?.userId,
      //  orderIds: vehicle.orderIds,
     };
 
     if (newVehicle.priceHour <= 0 || newVehicle.nightPrice <= 0) {
-     showSnackbar("Price cannot be negative or 0", 2000);
+     showSnackbar("Price cannot be negative or 0", 2000,'red');
      return;
     }
 
     if (newVehicle.priceHour > 1000 || newVehicle.nightPrice > 1000) {
-     showSnackbar("Price can't be greater than 1000", 2000);
+     showSnackbar("Price can't be greater than 1000", 2000,'red');
      return;
     }
 
@@ -400,7 +403,7 @@ function editVehicle(event) {
      })
      .then(() => {
       dialog.close();
-      showSnackbar("Vehicle Updated Successfully", 2000);
+      showSnackbar("Vehicle Updated Successfully", 2000,'green');
       displayBikes();
       setTimeout(() => {
        window.location.reload();
@@ -460,7 +463,7 @@ function deleteVehicleById(event) {
    return deleteObject(db, "vehicles", vehicleId);
   })
   .then(() => {
-   showSnackbar("Vehicle Deleted Successfully", 2000);
+   showSnackbar("Vehicle Deleted Successfully", 2000,'green');
    displayBikes();
   });
 
@@ -490,14 +493,16 @@ function restoreSpacesInObject(obj) {
  return obj;
 }
 
-function showSnackbar(message, timeout = 3000) {
+function showSnackbar(message, timeout = 3000,bgColor="green") {
  snackbarDisplayPage.className = "show";
  snackbarDisplayPage.textContent = message;
+ snackbarDisplayPage.style.backgroundColor = bgColor
  setTimeout(function () {
   snackbarDisplayPage.className = snackbarDisplayPage.className.replace(
    "show",
    ""
   );
+ 
  }, timeout);
 }
 

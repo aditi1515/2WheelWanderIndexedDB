@@ -10,6 +10,13 @@ const bookingPageDatesSnackbar = document.querySelector(
 );
 //set locations in select
 window.addEventListener("load", () => {
+
+  const currUser = JSON.parse(localStorage.getItem("currUser"));
+ 
+  if (currUser?.role === "admin") {
+   window.location = "./analytics.html";
+  }
+
  openDatabase()
   .then((db) => {
    return getAllFromObjectStore(db, "locations");
@@ -30,6 +37,19 @@ window.addEventListener("load", () => {
   });
 });
 
+
+function getNminsAhead(n) {
+  const now = new Date();
+  const thirtyMinutesLater = new Date(now.getTime() + n * 60000); // 30 minutes in milliseconds
+  const year = thirtyMinutesLater.getFullYear();
+  const month = String(thirtyMinutesLater.getMonth() + 1).padStart(2, '0');
+  const day = String(thirtyMinutesLater.getDate()).padStart(2, '0');
+  const hour = String(thirtyMinutesLater.getHours()).padStart(2, '0');
+  const minute = String(thirtyMinutesLater.getMinutes()).padStart(2, '0');
+  return `${year}-${month}-${day}T${hour}:${minute}`;
+}
+
+
 //create values from params
 function filterOptionSearchParams() {
  const searchParams = new URLSearchParams(window.location.search);
@@ -49,8 +69,8 @@ function filterOptionSearchParams() {
  let startDateTimeInFormat = new Date(startDateTime);
  if (!startDateTime || !endDateTime || startDateTimeInFormat < currentDate) {
   redirection = true;
-  startDateTime = getCurrentDateTimeString();
-  endDateTime = getThirtyMinutesAhead();
+  startDateTime = getNminsAhead(15);
+  endDateTime = getNminsAhead(45);
  }
 
  if (redirection) {
@@ -485,12 +505,16 @@ function createOrder() {
   btn.addEventListener("click", () => {
    let vehicleString = btn.getAttribute("vehicleDetail");
    let vehicle = restoreSpacesInObject(JSON.parse(vehicleString));
+   const currentUser = JSON.parse(localStorage.getItem("currUser"));
    console.log("vehicleDetail: " + vehicle);
    // const orders = JSON.parse(localStorage.getItem("orders")) || [];
    const order = {
     orderId: generateOrderID(),
     orderGenerateDate: new Date(),
-    userId: JSON.parse(localStorage.getItem("currUser")).userId,
+    userId: currentUser.userId,
+    userFirstName: currentUser.fname ,
+    userLastName : currentUser.lname,
+    userEmail: currentUser.email,
     vehicleId: vehicle.vId,
     vehicleBrand: vehicle.vbrand,
     vehicleModel: vehicle.vmodel,
@@ -501,6 +525,10 @@ function createOrder() {
     start_time: vehicle.startDateTime.split("T")[1],
     end_date: vehicle.endDateTime.split("T")[0],
     end_time: vehicle.endDateTime.split("T")[1],
+    // createdAt: new Date().toISOString(),
+    // updatedAt: new Date().toISOString(),
+    // createdBy: JSON.parse(localStorage.getItem("currUser"))?.userId,
+    // updatedBy: JSON.parse(localStorage.getItem("currUser"))?.userId,
    };
 
    openDatabase()
