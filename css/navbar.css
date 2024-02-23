@@ -61,6 +61,11 @@
  height: 100%;
  width: 100%;
 }
+.user-img:hover{
+    background-color: #a53939a4;
+    padding: 2px;
+    
+}
 .dropdown-user-content {
  display: none;
  position: absolute;
@@ -161,6 +166,10 @@
  font-size: small;
  font-family: "Poppins", sans-serif;
  color:#292950;
+}
+.navbar-btn:hover{
+    text-decoration: underline;
+    color:#a53939
 }
 
 

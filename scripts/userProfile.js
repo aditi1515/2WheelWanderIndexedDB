@@ -12,7 +12,7 @@ const cancelChangeBtn = document.querySelector(".pass-cancel");
 const passChangeForm = document.querySelector(".pass-container");
 const passChangeSnackbar = document.querySelector("#passChange-snackbar");
 const profileInfoContainer = document.querySelector(".profileInfo-container");
-
+const dialog = document.querySelector("#cancel-confirm-dialog")
 window.addEventListener("load", () => {
  const currUser = JSON.parse(localStorage.getItem("currUser"));
 
@@ -239,67 +239,48 @@ function prepareOrderData() {
    );
    console.log("categorizedOrders", categorizedOrders);
    for (const ongoingOrder of categorizedOrders.ongoingOrders) {
-    const vehiclePromise = getVehicleDetails(ongoingOrder.vehicleId);
-    vehiclePromise.then((vehicle) => {
-     console.log("Vehicle details for vehicle id", vehicle);
-     const row = document.createElement("tr");
-     row.innerHTML = `
-      <td>${ongoingOrder.vehicleBrand} ${ongoingOrder.vehicleModel}</td>
-      <td>${vehicle.vType}</td>
-      
-      <td>${ongoingOrder.location}</td>
-      <td>${ongoingOrder.start_date} , ${ongoingOrder.start_time}</td>
-      <td>${ongoingOrder.end_date} ,  ${ongoingOrder.end_time}</td>
-      <td><img src = '${vehicle.vimg}' ></td>
-      <td>ongoing</td>
-    `;
-     ongoingTable.appendChild(row);
-    });
+    const row = document.createElement("tr");
+    row.innerHTML = `
+     <td>${ongoingOrder.vehicleBrand} ${ongoingOrder.vehicleModel}</td>
+     <td>${ongoingOrder.vehicleType}</td>
+     <td>${ongoingOrder.location}</td>
+     <td>${ongoingOrder.start_date} , ${ongoingOrder.start_time}</td>
+     <td>${ongoingOrder.end_date} ,  ${ongoingOrder.end_time}</td>
+    
+     <td>ongoing</td>
+   `;
+    ongoingTable.appendChild(row);
    }
    for (const activeOrder of categorizedOrders.activeOrders) {
-    const vehiclePromise = getVehicleDetails(activeOrder.vehicleId);
-    vehiclePromise
-     .then((vehicle) => {
-      const row = document.createElement("tr");
+
+    const row = document.createElement("tr");
       row.innerHTML = `
       <td>${activeOrder.vehicleBrand} ${activeOrder.vehicleModel}</td>
       
-      <td>${vehicle.vType}</td>
+      <td>${activeOrder.vehicleType}</td>
       <td>${activeOrder.location}</td>
       <td>${activeOrder.start_date} , ${activeOrder.start_time}</td>
       <td>${activeOrder.end_date} ,  ${activeOrder.end_time}</td>
-      <td><img src = '${vehicle.vimg}' ></td>
-      <td><button class="active-cancel-btn" orderId=${activeOrder.orderId} vehicleId = ${vehicle.vId}>Cancel</button></td>
+     
+      <td><button class="active-cancel-btn" onClick="deleteOrderdialog(event)" orderId=${activeOrder.orderId} vehicleId = ${activeOrder.vehicleId}>Cancel</button></td>
     `;
       activeTable.appendChild(row);
-     })
-     .then(() => {
-      addEventListenerToCnclBtns();
-     });
+    
    }
-
+  //  addEventListenerToCnclBtns();
    for (const passiveOrder of categorizedOrders.passiveOrders) {
-    const vehiclePromise = getVehicleDetails(passiveOrder.vehicleId);
-    vehiclePromise
-     .then((vehicle) => {
-      console.log("Vehicle details for vehicle id", vehicle);
-      const row = document.createElement("tr");
+    const row = document.createElement("tr");
       row.innerHTML = `
       <td>${passiveOrder.vehicleBrand} ${passiveOrder.vehicleModel}</td>
       
-      <td>${vehicle.vType}</td>
+      <td>${passiveOrder.vehicleType}</td>
       <td>${passiveOrder.location}</td>
       <td>${passiveOrder.start_date} , ${passiveOrder.start_time}</td>
       <td>${passiveOrder.end_date} ,  ${passiveOrder.end_time}</td>
-      <td><img src = '${vehicle.vimg}' ></td>
+      
       <td>completed </td>
     `;
       passiveTable.appendChild(row);
-     })
-
-     .catch((err) => {
-      console.log("Error in categorzing orders: " + err);
-     });
 
     // const userOrders = orders.filter((order) => order.userId === currUser.userId);
    }
@@ -317,6 +298,50 @@ function getVehicleDetails(vehicleId) {
    return vehicle;
   });
 }
+
+
+function deleteOrderdialog(event) {
+  const orderId = event.target.getAttribute("orderId");
+  dialog.innerHTML = `
+   <div class="delete-dialog">
+   <p>Are you sure you want to delete this Booking?</p>
+   <div class = 'deleteDialog-btn-container'><button class="delete-btn" orderId = ${orderId}>Delete</button>
+   <button class="cancel-btn">Cancel</button></div>
+   
+   </div>
+   `;
+  dialog.style.marginTop = "15rem";
+  dialog.show();
+  const deleteBtn = document.querySelector(".delete-btn");
+  const cancelBtn = document.querySelector(".cancel-btn");
+  deleteBtn.addEventListener("click", () => {
+    deleteOrderById(event);
+   dialog.close();
+  });
+  cancelBtn.addEventListener("click", () => {
+   dialog.close();
+  });
+ }
+
+ function deleteOrderById(event) {
+  console.log(event.target);
+  openDatabase()
+   .then((db) => {
+    console.log("Database opened successfully", db);
+    const orderId = event.target.getAttribute("orderId");
+    return deleteObject(db, "Bookings", orderId);
+   })
+   .then(() => {
+    showSnackbar("Order Deleted Successfully", 2000);
+    window.location.reload();
+   });
+ 
+  //  const vehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+  //  const updatedVehicles = vehicles.filter((vehicle) => {
+  //   return vehicle.vId !== vehicleId;
+  //  });
+  //  localStorage.setItem("vehicles", JSON.stringify(updatedVehicles));
+ }
 
 function addEventListenerToCnclBtns() {
  const activeOrderCancelBtn = document.querySelectorAll(".active-cancel-btn");

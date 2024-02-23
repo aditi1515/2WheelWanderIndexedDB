@@ -5,6 +5,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
 }
 
 .profileLeft-container {
@@ -228,4 +229,44 @@ tbody img {
     bottom: 0;
     opacity: 0;
   }
+}
+
+
+#cancel-confirm-dialog {
+  background-color: #292950;
+color: white;
+  border: none;
+  width: 40%;
+  padding: 2rem;
+
+  margin: auto;
+  
+  /* display: flex; */
+  position: absolute;
+  top: 0;
+  flex-direction: column;
+  gap: 10px;
+}
+/* #cancel-confirm-dialog div{
+ 
+} */
+
+.delete-btn,
+.cancel-btn {
+  margin-top: 10px;
+  padding: 10px;
+  width: 50%;
+  background-color: #f38a9f;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+.deleteDialog-btn-container{
+  display:  flex; 
+  gap:1rem;
+}
+
+.profileInfo-container{
+  position: relative;
 }

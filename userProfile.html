@@ -21,7 +21,7 @@
         <!-- <button class="dropbtn">Dropdown</button> -->
         <!-- <li class="nav-options "><div class="user-img-container"><img src="./assets/images/user2.png" class="user-img"></div></li>
         <div class="dropdown-user-content"> --> 
-          <a class="navbar-btn" href="./userProfile.html">View Profile</a>
+          <a class="navbar-btn" href="./userProfile.html">View Profile/Orders</a>
           <a class="navbar-btn" href="#"  id = "logOut-link">Logout</a>
           
         <!-- </div> -->
@@ -107,15 +107,16 @@
               <th>Location</th>
               <th>Start Date </th>
               <th>End Date</th>
-              <th>Image</th>
+              <!-- <th>Image</th> -->
               <th>Status</th>
             </thead>
             <tbody class="ongoing-table"></tbody>
           </table>
         </div>
-
-        <div>Active orders
-          <table>
+        <dialog id="cancel-confirm-dialog"></dialog>
+        <div class="active-order-table">Active orders
+          
+          <table >
             <thead>
               
               <th>Vehicle Model</th>
@@ -123,11 +124,11 @@
               <th>Location</th>
               <th>Start Date </th>
               <th>End Date</th>
-              <th>Image</th>
+              <!-- <th>Image</th> -->
               <th>Status</th>
             </thead>
             <tbody class="active-table"></tbody>
-            <dialog id="cancel-confirm-dialog"></dialog>
+            
           </table>
         </div>
         <div>Passive orders
@@ -138,7 +139,7 @@
               <th>Location</th>
               <th>Start Date </th>
               <th>End Date</th>
-              <th>Image</th>
+              <!-- <th>Image</th> -->
               <th>Status</th>
             </thead>
             <tbody class="passive-table"></tbody>
@@ -148,6 +149,7 @@
       </div>
      
     </div>
+    
   </section>
  
   <script src="./scripts/navbar.js"></script>
