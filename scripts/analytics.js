@@ -97,7 +97,7 @@ function displayFigures() {
 
   Promise.all(promises)
     .then((results) => {
-      console.log("results", results);
+   
       revenue = results[0];
       users = results[1];
       bookings = results[2];
@@ -144,7 +144,6 @@ function calculateBikesScooters() {
       return getAllFromObjectStore(db, "Bookings");
     })
     .then((bookings) => {
-      console.log(bookings);
 
       // Map each booking to a promise that fetches the associated vehicle
       //  const vehiclePromises = bookings.map(function (booking) {
@@ -163,7 +162,7 @@ function calculateBikesScooters() {
 
       //  // Use Promise.all to wait for all vehicle promises to resolve
       //  return Promise.all(vehiclePromises).then(() => bikeScooterCount);
-      console.log("All bookings", bookings);
+     
       bookings.forEach(function (booking) {
         if (booking.vehicleType === "bike") {
           bikeScooterCount.bike += 1;
@@ -213,13 +212,13 @@ calculateBikesScooters();
 
 function mostLikedVehicleBrand() {
   let brandsMap = new Map();
-  console.log(brandsMap);
+
   openDatabase()
     .then((db) => {
       const vehicles = getAllFromObjectStore(db, "vehicles");
       vehicles
         .then((vehiclesArr) => {
-          console.log(vehicles);
+       
           vehiclesArr.forEach((vehicle) => {
             brandsMap.set(vehicle.vbrand, 0);
           });
@@ -238,7 +237,7 @@ function mostLikedVehicleBrand() {
           return brandsMap;
         })
         .then(() => {
-          console.log(brandsMap);
+         
           const graphLabels = [...brandsMap.keys()];
           const graphData = [...brandsMap.values()];
 
@@ -324,7 +323,7 @@ function mostBookingCities() {
         });
       })
       .then(() => {
-        console.log(cityBookingsMap);
+       
         const graphLabels = [...cityBookingsMap.keys()];
         const graphData = [...cityBookingsMap.values()];
 
@@ -435,7 +434,7 @@ function calculateRevenue() {
     const orders = getAllFromObjectStore(db, "Bookings");
     orders.then((ordersArr) => {
       ordersArr = ordersArr.filter((order) => isOrderInPast(order));
-      console.log("Orders in past", ordersArr);
+   
       ordersArr = sortOrders(ordersArr);
       const filterOption = revenueSelect.value;
       const revenue = ordersArr.reduce((stats, order) => {
@@ -467,7 +466,6 @@ function calculateRevenue() {
           if (!stats[key]) {
             stats[key] = 0;
           }
-          console.log(key, order.cost);
           stats[key] += parseInt(order.cost);
         }
         return stats;
@@ -475,7 +473,7 @@ function calculateRevenue() {
 
       const graphLabels = Object.keys(revenue);
       const graphData = Object.values(revenue);
-      console.log(graphLabels, graphData);
+    
       const data = {
         labels: graphLabels,
         datasets: [
@@ -537,7 +535,7 @@ function topPerformingUsers() {
         )
       );
       const topUsers = Array.from(sortedUserBookings).slice(0, 3);
-      console.log(topUsers);
+    
 
       topUsersList.innerHTML = "";
       topUsers.forEach((userObj) => {

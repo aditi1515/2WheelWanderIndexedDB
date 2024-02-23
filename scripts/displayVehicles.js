@@ -502,7 +502,7 @@ function showSnackbar(message, timeout = 3000,bgColor="green") {
    "show",
    ""
   );
- 
+  
  }, timeout);
 }
 

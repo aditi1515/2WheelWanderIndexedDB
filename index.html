@@ -161,7 +161,9 @@ if (startDate < new Date() - bufferTime || endDate < new Date() - bufferTime) {
   const redirectURL = `http://127.0.0.1:5500/bookingPage.html?locationSelect=${encodeURIComponent(locationSelect.value)}&start-date=${encodeURIComponent(startDateInput.value)}&end-date=${encodeURIComponent(endDateInput.value)}`;
 
   // Redirect to the new URL
-  window.location.replace(redirectURL);
+  // window.location.replace(redirectURL);
+  window.location.href = redirectURL;
+
 }
     </script>
     <script src="./scripts/navbar.js"></script>

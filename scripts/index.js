@@ -13,7 +13,7 @@ const dateValidationSnackbar = document.querySelector(
 window.addEventListener("load", () => {
   const currUser = JSON.parse(localStorage.getItem("currUser"));
  
-  if (currUser.role === "admin") {
+  if (currUser?.role === "admin") {
    window.location = "./analytics.html";
   }
  });
@@ -26,11 +26,10 @@ function setSelectMenu() {
    return getAllFromObjectStore(db, "locations");
   })
   .then((locationsArr) => {
-   console.log(locationsArr);
+   
    for (let i = 0; i < locationsArr.length; i++) {
     let opt = locationsArr[i];
-    console.log(opt);
-    console.log(locationsArr[i]);
+   
     let el = document.createElement("option");
     el.textContent = opt.city;
     el.value = opt.city;
